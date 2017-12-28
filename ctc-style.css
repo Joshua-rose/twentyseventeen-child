@@ -1,0 +1,70 @@
+/*
+CTC Separate Stylesheet
+Updated: 2017-12-15 23:43:12
+*/
+
+.panel-image-text {
+	position:absolute;  
+	width: 100%;
+	text-align:center;
+}
+.panel-image-text h2 {
+	font-family: hatterline, arial, sans-serif;
+	font-weight: bold;
+	margin-bottom:0;
+	color: white;
+}
+.panel-image-text h3 {
+	color:white;
+}
+.twentyseventeen-panel {
+	background-color:#eeeeee;
+}
+.twentyseventeen-panel p {
+	font-size:2rem
+}
+
+.page-one-column .panel-content .wrap {
+    max-width: 80%;
+}
+
+@media screen and (max-width:29.9999em){
+	.panel-image-text {
+		top:35%;
+	}	
+	.panel-image-text h2 {
+		font-size:4rem;
+	}
+}
+@media screen and (min-width:30em){
+	.panel-image-text {
+		top:60%;
+	}	
+	.panel-image-text h2 {
+		font-size:7rem;
+	}
+}
+@media screen and (min-width:48em){
+	.panel-image-text {
+		top:90%;
+	}	
+	.panel-image-text h2 {
+		font-size:10rem;
+	}
+}
+@media screen and (min-width:67em){
+	.panel-image-text {
+		top:35%;
+	}	
+	.panel-image-text h2 {
+		font-size:12rem;
+	}
+}
+@media screen and (min-width:79em){
+	.panel-image-text {
+		top:35%;
+	}	
+	.panel-image-text h2 {
+		font-size:12rem;
+	}
+}
