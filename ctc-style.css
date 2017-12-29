@@ -36,7 +36,7 @@ Updated: 2017-12-15 23:43:12
     display: inline-block;
 }
 
-.navigation-top .custom-logo-link img {
+.navigation-top .custom-logo-link img, .navigation-top .menu-item {
     max-height: 140px;
     -moz-transition: 1s;
     -ms-transition: 1s;
@@ -45,7 +45,7 @@ Updated: 2017-12-15 23:43:12
     transition: 1s;
 }
 
-.site-navigation-fixed .custom-logo-link img {
+.site-navigation-fixed .custom-logo-link img,  .site-navigation-fixed .menu-item{
     max-height: 40px;
 }
 
@@ -63,7 +63,7 @@ Updated: 2017-12-15 23:43:12
         top: 60%;
     }
     .panel-image-text h2 {
-        font-size: 7rem;
+        font-size: 6rem;
     }
 }
 
@@ -72,7 +72,7 @@ Updated: 2017-12-15 23:43:12
         top: 90%;
     }
     .panel-image-text h2 {
-        font-size: 10rem;
+        font-size: 8rem;
     }
 }
 
@@ -81,7 +81,7 @@ Updated: 2017-12-15 23:43:12
         top: 35%;
     }
     .panel-image-text h2 {
-        font-size: 12rem;
+        font-size: 10rem;
     }
 }
 

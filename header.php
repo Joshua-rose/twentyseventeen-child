@@ -32,13 +32,9 @@
 
 		<?php if ( has_nav_menu( 'top' ) ) : ?>
 			<div class="navigation-top">
+			
 				<div class="wrap">
-				
-					<?php 
-					$custom_logo_id = get_theme_mod( 'custom_logo' );
-					$custom_logo_image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-					?>
-					<a href="<?php echo get_home_url();?>" title="Return to the front page of the site"><img src="<?php echo $custom_logo_image[0]; ?>" alt="Site Logo" /></a>
+						
 					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>
 				</div><!-- .wrap -->
 			</div><!-- .navigation-top -->
