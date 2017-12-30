@@ -60,6 +60,28 @@ function twentyseventeen_child_customize_register( $wp_customize ) {
 	) ) );
 
 	/**
+	 * Logo Placement options
+	 */
+	$wp_customize->add_setting('logo_placement', array(
+		'default' => 'navigation'
+	));
+	$wp_customize->add_control('logo_placement', array(
+		'lable' => 'Select the location of the of the custom logo',
+		'section' => 'title_tagline',
+		'type' => 'radio',
+		'description' => 'WHen the navigation location is selected the custom logo will only appear in the navigation area.',
+		'choices' => array(
+			'navigation' => 'Navigation',
+			'header' => 'Over Header Image'
+		),
+		'active_callback' => 'twentyseventeen_is_static_front_page',
+	));
+	$wp_customize->selective_refresh->add_partial( 'logo_placement', array(
+			'selector'            => '#logo_placement',
+			'render_callback'     => 'twentyseventeen_front_page_section',
+			'container_inclusive' => true,
+		) );
+	/**
 	 * Theme options.
 	 */
 	$wp_customize->add_section( 'theme_options', array(
