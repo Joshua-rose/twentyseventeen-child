@@ -32,7 +32,7 @@
 
 		<?php if ( has_nav_menu( 'top' ) ) : ?>
 			<div class="navigation-top">
-			
+				<?php the_custom_logo(); ?>
 				<div class="wrap">
 						
 					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>
