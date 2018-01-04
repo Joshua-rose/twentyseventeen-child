@@ -33,8 +33,9 @@
 		<?php if ( has_nav_menu( 'top' ) ) : ?>
 			<div class="navigation-top">
 				<?php 
-				//get theme mod to hid this depenting on customizer
-				the_custom_logo(); ?>
+				if (get_theme_mod('logo_placement', 'navigation') === 'navigation'){
+					the_custom_logo(); 
+				} ?>
 				<div class="wrap">
 						
 					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>

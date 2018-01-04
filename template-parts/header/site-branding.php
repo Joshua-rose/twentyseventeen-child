@@ -14,7 +14,9 @@
 
 		<?php 
 		//get theme mod to hid this depenting on customizer
-		the_custom_logo(); ?>
+		if (get_theme_mod('logo_placement', 'navigation') === 'header'){
+			the_custom_logo(); 
+		}?>
 
 		<div class="site-branding-text">
 			<?php if ( is_front_page() ) : ?>
