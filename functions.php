@@ -1,17 +1,4 @@
 <?php
-// Twentyseventeen Child Theme, adds Words over Parallax and Movement of Custom logo
-// Copyright (C) 2017  Joshua Rose
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation; either version 2
-// of the License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
@@ -24,13 +11,19 @@ if ( !function_exists( 'chld_thm_cfg_parent_css' ) ):
     }
 endif;
 add_action( 'wp_enqueue_scripts', 'chld_thm_cfg_parent_css', 10 );
-
+         
 if ( !function_exists( 'child_theme_configurator_css' ) ):
     function child_theme_configurator_css() {
         wp_enqueue_style( 'chld_thm_cfg_separate', trailingslashit( get_stylesheet_directory_uri() ) . 'ctc-style.css', array( 'chld_thm_cfg_parent','twentyseventeen-style' ));
     }
 endif;
 add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css' );
+if (!function_exists('child_theme_font_css')):
+    function child_theme_font_css(){
+        wp_enqueue_style('child_theme_font', trailingslashit( get_stylesheet_directory_uri() ).'assets/css/fonts.css', array('chld_thm_cfg_separate','chld_thm_cfg_parent','twentyseventeen-style' ));
+    }
+endif;
+add_action( 'wp_enqueue_scripts', 'child_theme_font_css' );
 
 if (!function_exists('add_google_fonts')):
     function add_google_fonts(){
@@ -49,3 +42,40 @@ add_filter( 'twentyseventeen_front_page_sections', 'childtheme_front_page_sectio
 require (get_stylesheet_directory(). '/inc/customizer.php' );
 
 // END ENQUEUE PARENT ACTION
+/**
+ * Displays message in javascript console
+ * 
+ * @param string $message 
+ * @param string|int $type How the message is displayed in the console {@example 'log'} or {@example 1}.
+ */
+function print_to_javascript_console($message, $type = 'log'){
+    echo '<script type="text/javascript>console.'.javascriptConsoleTypeVerification($type).'('.$message.')</script>"';
+}
+/**
+ * validates or converst $type to work with the JavaScript Console
+ * 
+ * @param string|int $type 
+ * @return string valid string that can be used with the javascript console
+ */
+function javascriptConsoleTypeVerification($type){
+    if (!is_numeric($type)) {
+        $consoleOptions = array('assert','clear','count','dir','dirxml','error','group','groupCollapsed','groupEnd','info','log','profile','profileEnd','table','time','timeEnd','timeStamp','trace','warn');
+        $t = strtolower($type);
+        return in_array($t , $consoleOptions)? $t: 'log';
+    }
+    switch ($type) {
+            case 2:
+                $retValue = 'info';
+                break;
+            case 3:
+                $retValue = 'warn';
+                break;
+            case 4:
+                $retValue = 'error';
+                break;
+            default:
+                $retValue = 'log';
+                break;
+        }
+    return $retValue;
+}

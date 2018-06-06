@@ -18,15 +18,17 @@ global $twentyseventeencounter;
 		$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'twentyseventeen-featured-image' );
 
 		// Calculate aspect ratio: h / w * 100%.
-		$ratio = $thumbnail[2] / $thumbnail[1] * 100;
-		$useTitle = get_theme_mod('panel_'.$twentyseventeencounter.'_Headline_Use_Title') || true;
-		$headline = get_theme_mod('panel_'.$twentyseventeencounter.'_Headline');
-		if ($useTitle){
-			$headline = get_the_title();
-		}
-		$h_style = get_theme_mod('panel_'.$twentyseventeencounter.'_Headline_style');
-		$subheadline = get_theme_mod('panel_'.$twentyseventeencounter.'_SubHeadline');
-		$s_style = get_theme_mod('panel_'.$twentyseventeencounter.'_SubHeadline_style');
+		if (get_theme_mod('panel_'.$twentyseventeencounter.'_Show_Title', true)):
+			$ratio = $thumbnail[2] / $thumbnail[1] * 100;
+			$useTitle = get_theme_mod('panel_'.$twentyseventeencounter.'_Headline_Use_Title', true);
+			$headline = get_theme_mod('panel_'.$twentyseventeencounter.'_Headline');
+			if ($useTitle){
+				$headline = get_the_title();
+			}
+			$h_style = get_theme_mod('panel_'.$twentyseventeencounter.'_Headline_style');
+			$subheadline = get_theme_mod('panel_'.$twentyseventeencounter.'_SubHeadline');
+			$s_style = get_theme_mod('panel_'.$twentyseventeencounter.'_SubHeadline_style');
+		endif;//end Show Title
 	?>
 
 		<div class="panel-image" style="background-image: url(<?php echo esc_url( $thumbnail[0] ); ?>);">

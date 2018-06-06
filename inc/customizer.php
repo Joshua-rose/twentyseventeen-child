@@ -265,8 +265,8 @@ function twentyseventeen_child_customize_register( $wp_customize ) {
 		) );
 		$wp_customize->add_control( 'panel_' . $i . '_Show_Title', array(
 			/* translators: %d is the front page section number */
-			'label'          => sprintf( __( 'Front Page Section %d Use Title', 'twentyseventeen' ), $i ),
-			'description'    => ( 1 !== $i ? '' : __( 'Use the page title for the headline', 'twentyseventeen' ) ),
+			'label'          => sprintf( __( 'Front Page Section %d Show Title', 'twentyseventeen' ), $i ),
+			'description'    => ( 1 !== $i ? '' : __( 'Show text over the image.', 'twentyseventeen' ) ),
 			'section'        => 'theme_options',
 			'type'           => 'checkbox',
 			'active_callback' => 'twentyseventeen_is_static_front_page',
