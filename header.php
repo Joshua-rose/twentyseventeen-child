@@ -33,9 +33,19 @@
 		<?php if ( has_nav_menu( 'top' ) ) : ?>
 			<div class="navigation-top">
 				<?php 
-				if (get_theme_mod('logo_placement', 'navigation') === 'navigation'){
+				if (has_custom_logo()):
+				if (get_theme_mod('logo_placement') === 'navigation'){
 					the_custom_logo(); 
-				} ?>
+				}
+				elseif (get_theme_mod('logo_placement') === 'nav-small' ) {
+					$custom_logo_id = get_theme_mod( 'custom_logo' );
+					$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+					?>
+					<a href="https://www.vbcclinton.org/" class="custom-logo-link nav-small" rel="home" itemprop="url"><img src="<?php echo $image[0];?>" alt="Logo"></a>
+					<?php
+				} 
+				
+			endif;//end of has_custom_logo?>
 				<div class="wrap">
 						
 					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>

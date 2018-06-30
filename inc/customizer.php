@@ -72,6 +72,7 @@ function twentyseventeen_child_customize_register( $wp_customize ) {
 		'description' => 'WHen the navigation location is selected the custom logo will only appear in the navigation area.',
 		'choices' => array(
 			'navigation' => 'Navigation',
+			'nav-small' => 'Thumbnail in navigation',
 			'header' => 'Over Header Image'
 		),
 		'active_callback' => 'twentyseventeen_is_static_front_page',
