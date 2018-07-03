@@ -89,7 +89,7 @@ function twentyseventeen_child_customize_register( $wp_customize ) {
 		'title'    => __( 'Theme Options', 'twentyseventeen' ),
 		'priority' => 130, // Before Additional CSS.
 	) );
-
+	
 	$wp_customize->add_setting( 'page_layout', array(
 		'default'           => 'two-column',
 		'sanitize_callback' => 'twentyseventeen_sanitize_page_layout',
@@ -108,6 +108,34 @@ function twentyseventeen_child_customize_register( $wp_customize ) {
 		'active_callback' => 'twentyseventeen_is_view_with_layout_option',
 	) );
 	
+		/**
+		 * Change the default image on standard (non front) pages
+		 * @see {@link[https://www.sitepoint.com/using-the-wordpress-customizer-media-controls/]}
+		 */
+			$wp_customize->add_setting('alternative_page_header',array(
+				'default' => false,
+			));
+			$wp_customize->add_control('alternative_page_header',array(
+				'label' => __('Show alternative header on non front pages', 'twentyseventeen'),
+				'description' => __('Alternative image will be shown on all child pages'),
+				'section' => 'header_image',
+				'type' => 'checkbox',
+				'active_callback' => 'twentyseventeen_is_not_static_front_page',
+			));
+			$wp_customize->add_setting('alternative_page_header_media', array(
+				'type' => 'theme_mod',
+   		 'capability' => 'edit_theme_options',
+				'sanitize_callback' => 'absint'
+			));
+			$wp_customize->add_control(new WP_Customize_Cropped_Image_Control($wp_customize, 'alternative_page_header_media', array(
+				'section' => 'header_image',
+				'label' => __('Alternative Header Media', 'twentyseventeen'),
+				'width' => 1000,
+				'height' => 100,
+				'active_callback' => 'twentyseventeen_is_not_static_front_page',
+			)));
+
+			
 	/**
 	 * Filter number of front page sections in Twenty Seventeen.
 	 *
@@ -282,3 +310,6 @@ function twentyseventeen_child_customize_register( $wp_customize ) {
 remove_action( 'customize_register', 'twentyseventeen_customize_register' );
 add_action( 'customize_register', 'twentyseventeen_child_customize_register' );
 
+function twentyseventeen_is_not_static_front_page(){
+	return !twentyseventeen_is_static_front_page();
+}
