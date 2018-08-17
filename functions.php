@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
-
+$ctc_style_version = '1.3.1'; // update to bust through cache issues
 // BEGIN ENQUEUE PARENT ACTION
 // AUTO GENERATED - Do not modify or remove comment markers above or below:
 
@@ -14,7 +14,8 @@ add_action( 'wp_enqueue_scripts', 'chld_thm_cfg_parent_css', 10 );
          
 if ( !function_exists( 'child_theme_configurator_css' ) ):
     function child_theme_configurator_css() {
-        wp_enqueue_style( 'chld_thm_cfg_separate', trailingslashit( get_stylesheet_directory_uri() ) . 'ctc-style.css', array( 'chld_thm_cfg_parent','twentyseventeen-style' ));
+        global $ctc_style_version;
+        wp_enqueue_style( 'chld_thm_cfg_separate', trailingslashit( get_stylesheet_directory_uri() ) . 'ctc-style.css', array( 'chld_thm_cfg_parent','twentyseventeen-style' ), $ctc_style_version);
     }
 endif;
 add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css' );
